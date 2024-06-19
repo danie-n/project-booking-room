@@ -1,0 +1,20 @@
+version: '3.4'
+#Password: noubissie
+services:
+  postgres:
+    image: postgres:latest
+    restart: on-failure
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: booking
+      SERVICE_TAGS: postgres-room-db
+      SERVICE_NAME: booking-room-db
+    volumes:
+       - booking_db:/var/lib/postgresql/data/
+    ports: 
+      - 5435:5432
+    networks:
+     - default
+volumes:
+  booking_db:
